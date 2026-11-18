@@ -1,0 +1,6 @@
+{
+  "name": "MasterWave",
+  "description": "MasterWave Music — Liquid Glass Android music player with real audio streaming, personalized playlists, and artwork-aware UI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,163 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated MasterWave user profile and synced playback preferences.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Firebase Auth UID of the user." },
+        "displayName": { "type": "string", "description": "User display name." },
+        "email": { "type": "string", "description": "User email address (PII, owner-only)." },
+        "photoUrl": { "type": "string", "description": "Optional avatar URL." },
+        "preferredQuality": { "type": "string", "enum": ["HIGH", "STANDARD", "DATA_SAVER"] },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on creation." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on update." }
+      },
+      "required": ["userId", "displayName", "preferredQuality", "createdAt", "updatedAt"]
+    },
+    "LikedTrack": {
+      "title": "LikedTrack",
+      "description": "A track liked by the user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "trackKey": { "type": "string" },
+        "source": { "type": "string", "enum": ["AUDIUS", "ITUNES"] },
+        "title": { "type": "string" },
+        "artist": { "type": "string" },
+        "album": { "type": "string" },
+        "artworkUrl": { "type": "string" },
+        "streamUrl": { "type": "string" },
+        "externalUrl": { "type": "string" },
+        "durationMs": { "type": "integer" },
+        "capability": { "type": "string", "enum": ["FULL_STREAM", "PREVIEW_30S", "METADATA_ONLY", "EXTERNAL_LINK"] },
+        "genre": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "trackKey", "source", "title", "artist", "album", "artworkUrl", "streamUrl", "externalUrl", "durationMs", "capability", "genre", "createdAt"]
+    },
+    "Playlist": {
+      "title": "Playlist",
+      "description": "User-created playlist.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "artworkUrl": { "type": "string" },
+        "trackCount": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "name", "description", "artworkUrl", "trackCount", "createdAt", "updatedAt"]
+    },
+    "PlaylistTrack": {
+      "title": "PlaylistTrack",
+      "description": "An ordered track entry inside a user playlist.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "playlistId": { "type": "string" },
+        "trackKey": { "type": "string" },
+        "source": { "type": "string", "enum": ["AUDIUS", "ITUNES"] },
+        "title": { "type": "string" },
+        "artist": { "type": "string" },
+        "album": { "type": "string" },
+        "artworkUrl": { "type": "string" },
+        "streamUrl": { "type": "string" },
+        "externalUrl": { "type": "string" },
+        "durationMs": { "type": "integer" },
+        "capability": { "type": "string", "enum": ["FULL_STREAM", "PREVIEW_30S", "METADATA_ONLY", "EXTERNAL_LINK"] },
+        "genre": { "type": "string" },
+        "position": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "playlistId", "trackKey", "source", "title", "artist", "album", "artworkUrl", "streamUrl", "externalUrl", "durationMs", "capability", "genre", "position", "createdAt"]
+    },
+    "SavedAlbum": {
+      "title": "SavedAlbum",
+      "description": "An album saved to the user's library.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "albumKey": { "type": "string" },
+        "source": { "type": "string", "enum": ["AUDIUS", "ITUNES"] },
+        "title": { "type": "string" },
+        "artist": { "type": "string" },
+        "artworkUrl": { "type": "string" },
+        "externalUrl": { "type": "string" },
+        "releaseYear": { "type": "string" },
+        "trackCount": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "albumKey", "source", "title", "artist", "artworkUrl", "externalUrl", "releaseYear", "trackCount", "createdAt"]
+    },
+    "FollowedArtist": {
+      "title": "FollowedArtist",
+      "description": "An artist followed by the user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "artistKey": { "type": "string" },
+        "source": { "type": "string", "enum": ["AUDIUS", "ITUNES"] },
+        "name": { "type": "string" },
+        "artworkUrl": { "type": "string" },
+        "genre": { "type": "string" },
+        "externalUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "artistKey", "source", "name", "artworkUrl", "genre", "externalUrl", "createdAt"]
+    },
+    "ListeningHistoryEntry": {
+      "title": "ListeningHistoryEntry",
+      "description": "A track recently played by the user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "trackKey": { "type": "string" },
+        "source": { "type": "string", "enum": ["AUDIUS", "ITUNES"] },
+        "title": { "type": "string" },
+        "artist": { "type": "string" },
+        "album": { "type": "string" },
+        "artworkUrl": { "type": "string" },
+        "streamUrl": { "type": "string" },
+        "externalUrl": { "type": "string" },
+        "durationMs": { "type": "integer" },
+        "capability": { "type": "string", "enum": ["FULL_STREAM", "PREVIEW_30S", "METADATA_ONLY", "EXTERNAL_LINK"] },
+        "genre": { "type": "string" },
+        "playedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "trackKey", "source", "title", "artist", "album", "artworkUrl", "streamUrl", "externalUrl", "durationMs", "capability", "genre", "playedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile and synced preferences document."
+    },
+    "/users/{userId}/liked_tracks/{trackId}": {
+      "schema": { "$ref": "#/entities/LikedTrack" },
+      "description": "Tracks liked by the user."
+    },
+    "/users/{userId}/playlists/{playlistId}": {
+      "schema": { "$ref": "#/entities/Playlist" },
+      "description": "Playlists owned by the user."
+    },
+    "/users/{userId}/playlists/{playlistId}/tracks/{entryId}": {
+      "schema": { "$ref": "#/entities/PlaylistTrack" },
+      "description": "Ordered tracks belonging to a user playlist."
+    },
+    "/users/{userId}/saved_albums/{albumId}": {
+      "schema": { "$ref": "#/entities/SavedAlbum" },
+      "description": "Albums saved to the user's library."
+    },
+    "/users/{userId}/followed_artists/{artistId}": {
+      "schema": { "$ref": "#/entities/FollowedArtist" },
+      "description": "Artists followed by the user."
+    },
+    "/users/{userId}/listening_history/{historyId}": {
+      "schema": { "$ref": "#/entities/ListeningHistoryEntry" },
+      "description": "User's recently played track history."
+    }
+  }
+}

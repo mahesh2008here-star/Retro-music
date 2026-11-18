@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MasterWave</string>
+    <string name="brand_full_name">MasterWave Music</string>
+    <string name="brand_tagline">High-precision acoustic streaming wrapped in Liquid Glass</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_explore">Explore</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_library">Library</string>
+    <string name="sign_in_google">Sign in with Google</string>
+    <string name="sign_out">Sign out</string>
+    <string name="badge_full_stream">Full Track</string>
+    <string name="badge_preview_30s">30s Preview</string>
+    <string name="badge_metadata_only">Catalog Info</string>
+    <string name="badge_external_link">External Service</string>
+</resources>
